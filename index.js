@@ -13,15 +13,11 @@
 var debug = require('debug')('resize-image-loader');
 var gm = null;
 var hasImageMagick = false;
-try {
   require('child_process').execSync("gm -help")
   gm = require('gm').subClass({ imageMagick: true });
-} catch(e){
-  console.info('resize-image-loader: ImageMagick not installed. Falling back to LWIP.');
-}
 
 
-var lwip = require('lwip');
+var lwip = {};
 var sizeOf = require('image-size');
 var Datauri = require('datauri');
 var fs = require('fs');
